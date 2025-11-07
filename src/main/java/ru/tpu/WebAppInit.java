@@ -1,4 +1,4 @@
-package ru.tpu.config;
+package ru.tpu;
 
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
