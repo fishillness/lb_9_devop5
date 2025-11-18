@@ -43,11 +43,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.5.7</version>  <!-- ← ДОБАВЬТЕ ЭТУ СТРОКУ -->
+                <version>3.5.7</version>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal>  <!-- ← ДОБАВЬТЕ ЭТОТ БЛОК -->
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
