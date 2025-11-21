@@ -1,6 +1,7 @@
 package ru.tpu;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -8,10 +9,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler
+    @ExceptionHandler(UserNotFoundException.class)
     @ResponseBody
     public ResponseEntity<?> handleUserNotFoundException(final UserNotFoundException exception){
         return ResponseEntity.status(exception.getHttpStatus()).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public ResponseEntity<?> handleMethodArgumentNotValidException(final MethodArgumentNotValidException exception){
+        return ResponseEntity.badRequest().body("Invalid request: " + exception.getMessage());
     }
 }
 
