@@ -15,23 +15,23 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable("id") int id){
+    public ResponseEntity<User> getUser(@PathVariable("id") int id) {
         return ResponseEntity.ok(userService.getUser(id));
     }
 
     @PostMapping
     public ResponseEntity<Integer> createUser(@RequestBody User user) {
-       return ResponseEntity.ok(userService.createUser(user.getName()));
+        return ResponseEntity.ok(userService.createUser(user.getName()));
     }
 
     @PatchMapping
-    public ResponseEntity<?> updateUser(@RequestBody User user){
+    public ResponseEntity<?> updateUser(@RequestBody User user) {
         userService.updateUser(user);
         return ResponseEntity.ok("User has been updated successfully");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") int id){
+    public ResponseEntity<?> deleteUser(@PathVariable("id") int id) {
         userService.deleteUser(id);
         return ResponseEntity.ok("User has been deleted successfully");
     }

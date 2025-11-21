@@ -12,7 +12,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUser(int id){
+    public User getUser(int id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found: " + id));
     }
@@ -23,14 +23,14 @@ public class UserService {
         return userRepository.saveAndFlush(user).getId();
     }
 
-    public void updateUser(User user){
-        if (!userRepository.existsById(user.getId())){
+    public void updateUser(User user) {
+        if (!userRepository.existsById(user.getId())) {
             throw new UserNotFoundException("User not found: " + user.getId());
         }
         userRepository.save(user);
     }
 
-    public void deleteUser(int id){
+    public void deleteUser(int id) {
         if (!userRepository.existsById(id)) {
             throw new UserNotFoundException("User not found: " + id);
         }
