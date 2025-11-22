@@ -17,28 +17,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(exception.getHttpStatus()).body(exception.getMessage());
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler({MethodArgumentNotValidException.class,
+            IllegalArgumentException.class,
+            ConstraintViolationException.class,
+            MethodArgumentTypeMismatchException.class})
     @ResponseBody
-    public ResponseEntity<?> handleMethodArgumentNotValidException(final MethodArgumentNotValidException exception) {
+    public ResponseEntity<?> handleMethodArgumentNotValidException(final Exception exception) {
         return ResponseEntity.badRequest().body("Invalid request: " + exception.getMessage());
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseBody
-    public ResponseEntity<?> handleIllegalArgumentException(final IllegalArgumentException exception) {
-        return ResponseEntity.badRequest().body("Invalid request: " + exception.getMessage());
-    }
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseBody
-    public ResponseEntity<?> handleConstraintViolationException(final ConstraintViolationException exception) {
-        return ResponseEntity.badRequest().body("Invalid request: " + exception.getMessage());
-    }
-
-    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    @ResponseBody
-    public ResponseEntity<String> handleTypeMismatch(MethodArgumentTypeMismatchException exception) {
-        return ResponseEntity.badRequest().body("Invalid parameter type: " + exception.getMessage());
     }
 }
 
